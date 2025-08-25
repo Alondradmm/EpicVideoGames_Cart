@@ -1,4 +1,4 @@
-const errorMessage = document.getElementById('errorMessage');
+let errorMessage = document.getElementById('errorMessage');
 // Abrir modal de Login
 function openLoginModal(){
     document.getElementById("login-modal").style.display='flex'
@@ -36,6 +36,7 @@ btnLogin.addEventListener('click', async () => {
             closeLoginModal()
             window.location.reload()
         } else {
+            errorMessage.style.color = "#cf3c3c"
             errorMessage.textContent = 'Error en credenciales'
         }
     } catch (error) {

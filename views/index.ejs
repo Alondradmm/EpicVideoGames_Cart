@@ -57,27 +57,52 @@
     </div>
 
     <div class="login-modal" id="login-modal">
-    <!-- Contenido modal -->
-    <form class="modal-content" id="modal" name="login-modal">
-        <!-- Formulario -->
-        <div class="modal-form">
-            <button class="close-btn" type="button" onclick="closeLoginModal()"><i class='bx bx-x'></i></button>
-            <h2>EpicVideoGames</h2>
-            <div class="form-body">
-                <p>Inicia Sesión para añadir ítems al carrito</p>
-                <input type="text" name="email" placeholder="Email" id="username">
-                <input type="password" name="password" placeholder="Contraseña" id="password">
-                <button class="send-login-btn" type="button" id="btnLogin">Iniciar Sesión</button>
-                <a href="/auth/google" class="google-login-btn" id="btnGoogleLogin">
-                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="google logo">
-                    Inicia con Google
-                </a>
-                <div class="error-message" id="errorMessage"></div>
+        <!-- Contenido modal -->
+        <form class="modal-content" name="login-modal">
+            <!-- Formulario -->
+            <div class="modal-form">
+                <button class="close-btn" type="button" onclick="closeLoginModal()"><i class='bx bx-x'></i></button>
+                <h2>EpicVideoGames</h2>
+                <div class="form-body">
+                    <p>Inicia Sesión para añadir ítems al carrito</p>
+                    <input type="text" name="usuario" placeholder="Usuario" id="username">
+                    <input type="password" name="password" placeholder="Contraseña" id="password">
+                    <button class="send-login-btn" type="button" id="btnLogin">Iniciar Sesión</button>
+                    <a href="/auth/google" class="google-login-btn" id="btnGoogleLogin">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="google logo">
+                        Inicia con Google
+                    </a>
+                    <div class="error-message" id="errorMessage"></div>
+                    <p>¿No tienes cuenta? <a href="#" onclick="openRegisterModal()">Regístrate</a></p>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
+
+    <div class="login-modal" id="register-modal">
+        <!-- Contenido modal -->
+        <form class="modal-content">
+            <!-- Formulario -->
+            <div class="modal-form">
+                <button class="close-btn" type="button" onclick="closeRegisterModal()"><i class='bx bx-x'></i></button>
+                <h2>EpicVideoGames</h2>
+                <div class="form-body">
+                    <p>Registro de Nuevos Usuarios</p>
+                    <input type="text" name="usuario" placeholder="Usuario" id="reg_username">
+                    <input type="password" name="password" placeholder="Contraseña" id="reg_password">
+                    <button class="send-login-btn" type="button" id="btnRegister">Registrar</button>
+                    <a href="/auth/google" class="google-login-btn" id="btnGoogleLogin">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="google logo">
+                        Inicia con Google
+                    </a>
+                    <div class="error-message" id="errorMessageRegister"></div>
+                    <p>¿Ya tienes cuenta? <a href="#" onclick="openLoginModal()">Inicia Sesión</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 <script src="js/cart.js"></script>
 <script src="js/login.js"></script>
+<script src="js/register.js"></script>
 </html>

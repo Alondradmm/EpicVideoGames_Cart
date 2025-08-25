@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EpicVideoGames</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <h1>EpicVideoGames</h1>
+        <div class="nav-opt">
+            <!-- Variable user almacenada en el req.session.user -->
+            <% if (!user) { %>
+                <a href="#" class="login-btn" onclick="openLoginModal()">Login<i class="bx bx-log-in"></i> </a>
+            <% } else { %>
+                <!-- Cierra sesión (session.destroy()) y borra el localStorage (logOut()) -->
+                <a href="/logout" class="login-btn" onclick="logOut()"><%= user %><i class="bx bx-log-out"></i> </a>
+            <% } %>
+            <a href="#" class="cart-btn" id="btnCart">Ver Carrito <i class='bx bxs-cart'></i> </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="card-container">
+            <% for (let item of products) { %>
+                <div class="card">
+                    <img src="<%= item.img %>" class="card-img">
+                    <div class="card-detail">
+                        <p class="card-title"><%= item.nombre %> <i class="<%= item.plataforma %>"></i></p>
+                        <div class="card-trade">
+                            <div>
+                                <p class="card-price">$<%= item.precio.toFixed(2) %></p>
+                                <p class="card-stock">Quedan <%= item.stock %></p>
+                            </div>
+                            <a class="card-btn" onclick="addItemToCart('<%= item.id %>')"><i class='bx bxs-cart-add'></i> </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <!-- Carrito de compra -->
+    <div class="cart-menu" id="cart-menu">
+        <button class="close-btn" onclick="closeCart()"><i class='bx bx-x'></i></button>
+        <h2>Carrito de Compra</h2>
+        <h3 id="cartTotal"></h3>
+        <div id="cartContent" class="cart-list"></div>
+        <div class="cart-opt" id="cartOpt">
+            <a href="#" class="cart-delete" onclick="clearCart()"><i class='bx bxs-trash'></i> Borrar Carrito</a>
+            <a href="#" class="cart-confirm" onclick="confirmCartPayment()"><i class='bx bxs-check-square'></i> Confirmar Compra</a>
+        </div>
+    </div>
+
+    <div class="login-modal" id="login-modal">
+    <!-- Contenido modal -->
+    <form class="modal-content" id="modal" name="login-modal">
+        <!-- Formulario -->
+        <div class="modal-form">
+            <button class="close-btn" type="button" onclick="closeLoginModal()"><i class='bx bx-x'></i></button>
+            <h2>EpicVideoGames</h2>
+            <div class="form-body">
+                <p>Inicia Sesión para añadir ítems al carrito</p>
+                <input type="text" name="email" placeholder="Email" id="username">
+                <input type="password" name="password" placeholder="Contraseña" id="password">
+                <button class="send-login-btn" type="button" id="btnLogin">Iniciar Sesión</button>
+                <a href="/auth/google" class="google-login-btn" id="btnGoogleLogin">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="google logo">
+                    Inicia con Google
+                </a>
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="js/cart.js"></script>
+<script src="js/login.js"></script>
+</html>

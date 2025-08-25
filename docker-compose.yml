@@ -1,0 +1,19 @@
+# Servicios a configurar
+services:
+  # Aplicación local
+  app:
+    # Se construye en el directorio actual
+    build: .
+    # Enlaza el puerto 3000 local 
+    # con el 3000 del contenedor
+    ports:
+      - "3000:3000"
+    # Directorio donde se encuentra el código
+    # Configurado en Dockerfile
+    volumes:
+      - .:/usr/src/app 
+    # Archivo de variables de entorno
+    env_file:
+      - .env.example
+    # Comando para iniciar el servicio
+    command: ["node", "server.js"]

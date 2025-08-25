@@ -38,7 +38,23 @@ class UserModel {
         // Añadir usuario a la BD de usuarios
         users.push(nuevoUser)
         return nuevoUser
-    }
+    };
+
+    // Añadir nuevo usuario
+    static createUser(username, password) {
+        // Generar nuevo ID para el nuevo usuario
+        const nuevoId=users.length>0?Math.max(...users.map(user=>user.id))+1:1;
+        // Crear objeto de nuevo usuario
+        const nuevoUser={
+            id:nuevoId,
+            username:username,
+            password: password,
+            role: 'user'
+        };
+        // Añadir usuario a la BD de usuarios
+        users.push(nuevoUser)
+        return nuevoUser
+    };
 }
 
 module.exports = UserModel;
